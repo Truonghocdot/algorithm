@@ -1,29 +1,70 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-Struct Node {
-	int n;
-	Struct Node
-	int * r;
+// Cấu trúc một nút trong danh sách
+typedef struct Node {
+    int data;
+    struct Node* next;
+} Node;
+
+// Hàm tạo một nút mới
+Node* createNode(int value) {
+    Node* newNode = (Node*)malloc(sizeof(Node));
+    if (newNode == NULL) {
+        printf("Khong the cap phat bo nho.\n");
+        exit(1);
+    }
+    newNode->data = value;
+    newNode->next = NULL;
+    return newNode;
 }
 
-int summaryOfSquareTon (int n) {
-	if(n < 2) return 1;
-	return n*n + summaryOfSquareTon(n - 1);
+// Hàm thêm một nút vào đầu danh sách
+Node* addToHead(Node* head, int value) {
+    Node* newNode = createNode(value);
+    newNode->next = head;
+    return newNode;
 }
 
-void printReverseOfNumber (int n ) {
-	if(n == 0) return;
-	printf("%d",n%10);
-	
-	printReverseOfNumber(n/10);
+// Hàm thêm một nút vào cuối danh sách
+Node* addToTail(Node* head, int value) {
+    Node* newNode = createNode(value);
+    if (head == NULL) {
+        return newNode;
+    }
+    Node* temp = head;
+    while (temp->next != NULL) {
+        temp = temp->next;
+    }
+    temp->next = newNode;
+    return head;
+}
+
+// Hàm in danh sách
+void printList(Node* head) {
+    Node* temp = head;
+    printf("Danh sach lien ket: ");
+    while (temp != NULL) {
+        printf("%d -> ", temp->data);
+        temp = temp->next;
+    }
+    printf("NULL\n");
 }
 
 int main() {
-	int n;
-	printf("Type the value of n ");
-	scanf("%d", &n );
-	printReverseOfNumber(n);
-//	printf("The value after caculate: %d", summaryOfSquareTon(n));
-	return 0;
+    Node* head = NULL;
+
+    // Thêm nút vào đầu danh sách
+    head = addToHead(head, 10);
+    head = addToHead(head, 20);
+    head = addToHead(head, 30);
+
+    // Thêm nút vào cuối danh sách
+    head = addToTail(head, 40);
+    head = addToTail(head, 50);
+
+    // In danh sách
+    printList(head);
+
+    return 0;
 }
