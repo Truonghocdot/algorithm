@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="book.xsl" type="text/xsl"?>
+<bookstore xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="book.xsd">
+    <book category="cooking">
+        <title>Everyday Italian</title>
+        <author>Giada De Laurentiis</author>
+        <year>2005</year>
+        <price>30.00</price>
+    </book>
+    <book category="science">
+        <title>A Brief History of Time</title>
+        <author>Stephen Hawking</author>
+        <year>1988</year>
+        <price>15.99</price>
+    </book>
+    <book category="fiction">
+        <title>The Alchemist</title>
+        <author>Paulo Coelho</author>
+        <year>1988</year>
+        <price>10.99</price>
+    </book>
+</bookstore>

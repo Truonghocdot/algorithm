@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:simpleType name="price">
+        <xs:restriction base="xs:decimal">
+            <xs:minExclusive value="0"></xs:minExclusive>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="year">
+        <xs:restriction base="xs:integer">
+            <xs:minExclusive value="1950"></xs:minExclusive>
+            <xs:maxExclusive value="2024"></xs:maxExclusive>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:element name="bookstore">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="book" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="title">
+                                <xs:simpleType>
+                                <xs:restriction base="xs:string">
+                                    <xs:minLength value="5"></xs:minLength>
+                                    <xs:maxLength value="150"></xs:maxLength>
+                                </xs:restriction>
+                                </xs:simpleType>
+                            </xs:element>
+                            <xs:element name="author"></xs:element>
+                            <xs:element name="year"></xs:element>
+                            <xs:element name="price" type="price"></xs:element>
+                        </xs:sequence>
+                        <xs:attribute name="category" type="xs:string"></xs:attribute>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
